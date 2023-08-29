@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+auth_config.ini
+
+finances
+data
+honeybook
+notebooks
