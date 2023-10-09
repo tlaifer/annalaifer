@@ -45,13 +45,21 @@ def remove_existing():
     existing_records = EngagementByMonth.all()
     EngagementByMonth.batch_delete(existing_records)
 
+print('Removing existing records... ')
 remove_existing()
+print('Records removed!')
+
+print('Collecting engagement data...')
 engagements = Engagement.all()
 financial_dates = FinancialDate.all()
 dates_by_yyyymm = records_by_field(financial_dates, 'yyyymm')
 engagements_by_id = records_by_id(engagements)
 new_records = []
+print('Building new records...')
 for engagement in engagements:
     if (engagement.start and engagement.end and engagement.total_amount):
         new_records.extend(engagement_to_month_engagements(engagement))
+
+print('Saving records to airtable...')
 EngagementByMonth.batch_save(new_records)
+print('All done!')
