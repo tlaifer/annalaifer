@@ -8,3 +8,6 @@ finances
 data
 honeybook
 notebooks
+
+gmail/creds/*
+gmail/contacts.csv
